@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 225" fill="none">
+    <defs>
+        <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#0a0b4f;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#00013F;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="calcGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#1a1a3e;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#060AF6;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+
+    <rect width="400" height="225" fill="url(#bg)" />
+
+    <!-- Ícone Central: Calculadora Simplificada -->
+    <g transform="translate(200, 112.5)">
+        <!-- Corpo da calculadora -->
+        <rect x="-55" y="-70" width="110" height="140" rx="12" fill="url(#calcGrad)" stroke="#00d1ff"
+            stroke-width="3" />
+
+        <!-- Display -->
+        <rect x="-45" y="-60" width="90" height="35" rx="6" fill="#000000" opacity="0.8" />
+        <text x="30" y="-35" font-family="monospace" font-size="16" fill="#00d1ff" text-anchor="end"
+            font-weight="bold">48x</text>
+
+        <!-- Botões (grid simplificado) -->
+        <rect x="-40" y="-15" width="25" height="20" rx="4" fill="#FFFFFF" opacity="0.2" />
+        <rect x="-10" y="-15" width="25" height="20" rx="4" fill="#FFFFFF" opacity="0.2" />
+        <rect x="20" y="-15" width="25" height="20" rx="4" fill="#FF4A68" />
+
+        <rect x="-40" y="12" width="25" height="20" rx="4" fill="#FFFFFF" opacity="0.2" />
+        <rect x="-10" y="12" width="25" height="20" rx="4" fill="#FFFFFF" opacity="0.2" />
+        <rect x="20" y="12" width="25" height="20" rx="4" fill="#FFFFFF" opacity="0.2" />
+
+        <rect x="-40" y="39" width="55" height="20" rx="4" fill="#00FF00" opacity="0.9" />
+        <rect x="20" y="39" width="25" height="20" rx="4" fill="#FFFFFF" opacity="0.2" />
+
+        <!-- Símbolo de porcentagem -->
+        <g transform="translate(-75, -50)">
+            <circle cx="0" cy="0" r="18" fill="#FFD700" />
+            <text x="0" y="8" font-family="Arial" font-size="24" fill="#000000" text-anchor="middle"
+                font-weight="bold">%</text>
+        </g>
+    </g>
+
+    <!-- Elementos decorativos -->
+    <circle cx="60" cy="50" r="12" fill="#FFD700" opacity="0.15" />
+    <circle cx="340" cy="175" r="15" fill="#00d1ff" opacity="0.15" />
+</svg>

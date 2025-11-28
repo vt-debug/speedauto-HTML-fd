@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 225" fill="none">
+    <defs>
+        <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#0a0b4f;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#00013F;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="carBody" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#3399ff;stop-opacity:1" />
+            <stop offset="50%" style="stop-color:#0066cc;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#004d99;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="glass" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#b3e0ff;stop-opacity:0.7" />
+            <stop offset="100%" style="stop-color:#66c2ff;stop-opacity:0.5" />
+        </linearGradient>
+        <radialGradient id="tire">
+            <stop offset="0%" style="stop-color:#3a3a3a;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:1" />
+        </radialGradient>
+    </defs>
+
+    <rect width="400" height="225" fill="url(#bg)" />
+
+    <!-- Carro Sedan Simplificado e Completo -->
+    <g transform="translate(200, 130)">
+
+        <!-- Sombra -->
+        <ellipse cx="0" cy="22" rx="85" ry="10" fill="#000000" opacity="0.35" />
+
+        <!-- CARROCERIA COMPLETA EM UMA PEÇA -->
+        <path d="M -80 8 
+             L -75 5 L -70 0 L -65 -8 L -60 -15 L -50 -22 L -35 -26 
+             L -25 -28 L -18 -35 L -8 -38 L 30 -38 L 45 -35 L 52 -28 
+             L 65 -22 L 72 -15 L 77 -8 L 80 0 L 82 5 L 85 8 
+             L 85 12 L 80 15 L -80 15 Z" fill="url(#carBody)" stroke="#003d66" stroke-width="2" />
+
+        <!-- Linha inferior -->
+        <line x1="-75" y1="10" x2="80" y2="10" stroke="#002d52" stroke-width="1.5" />
+
+        <!-- VIDROS (2 janelas visíveis - lado do motorista) -->
+        <!-- Para-brisa -->
+        <path d="M -18 -34 L -8 -37 L -5 -12 L -22 -12 Z" fill="url(#glass)" stroke="#4da6ff" stroke-width="1.5" />
+        <line x1="-16" y1="-32" x2="-8" y2="-15" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+
+        <!-- Janela lateral -->
+        <path d="M -3 -37 L 28 -37 L 30 -12 L -3 -12 Z" fill="url(#glass)" stroke="#4da6ff" stroke-width="1.5" />
+        <line x1="5" y1="-35" x2="7" y2="-14" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+
+        <!-- Vidro traseiro -->
+        <path d="M 32 -37 L 45 -34 L 48 -12 L 32 -12 Z" fill="url(#glass)" stroke="#4da6ff" stroke-width="1.5" />
+        <line x1="40" y1="-33" x2="38" y2="-14" stroke="#ffffff" stroke-width="1" opacity="0.4" />
+
+        <!-- DIVISÓRIAS DAS PORTAS -->
+        <line x1="-3" y1="-12" x2="-3" y2="15" stroke="#002d52" stroke-width="2" />
+        <line x1="32" y1="-12" x2="32" y2="15" stroke="#002d52" stroke-width="2" />
+
+        <!-- MAÇANETAS -->
+        <rect x="8" y="0" width="10" height="3" rx="1.5" fill="#1a1a1a" />
+        <ellipse cx="13" cy="1.5" rx="2" ry="1" fill="#2a2a2a" />
+
+        <rect x="40" y="0" width="10" height="3" rx="1.5" fill="#1a1a1a" />
+        <ellipse cx="45" cy="1.5" rx="2" ry="1" fill="#2a2a2a" />
+
+        <!-- ESPELHO RETROVISOR -->
+        <path d="M -20 -20 L -26 -18 L -25 -15 L -19 -17 Z" fill="#1a1a1a" />
+        <ellipse cx="-22" cy="-16.5" rx="2" ry="1.5" fill="#4da6ff" opacity="0.6" />
+
+        <!-- FAROL DIANTEIRO -->
+        <ellipse cx="82" cy="0" rx="6" ry="10" fill="#ffffff" opacity="0.95" />
+        <ellipse cx="82" cy="0" rx="4" ry="7" fill="#fff9e6" />
+        <ellipse cx="82" cy="-4" rx="2" ry="3" fill="#ffffff" />
+
+        <!-- Farol de neblina -->
+        <circle cx="78" cy="8" r="3" fill="#fff4cc" opacity="0.8" />
+
+        <!-- LANTERNA TRASEIRA -->
+        <path d="M -78 -2 L -75 -10 L -72 -10 L -74 -2 Z" fill="#ff3333" />
+        <rect x="-79" y="3" width="6" height="7" rx="1" fill="#ff1a1a" />
+        <line x1="-76" y1="4" x2="-76" y2="9" stroke="#ff6666" stroke-width="1" />
+
+        <!-- GRADE FRONTAL -->
+        <rect x="77" y="6" width="6" height="5" rx="1" fill="#1a1a1a" />
+        <line x1="78" y1="7" x2="78" y2="10" stroke="#333333" stroke-width="0.6" />
+        <line x1="80" y1="7" x2="80" y2="10" stroke="#333333" stroke-width="0.6" />
+        <line x1="82" y1="7" x2="82" y2="10" stroke="#333333" stroke-width="0.6" />
+
+        <!-- RODA TRASEIRA -->
+        <g transform="translate(-50, 15)">
+            <circle cx="0" cy="0" r="18" fill="url(#tire)" />
+            <circle cx="0" cy="0" r="15" fill="#1a1a1a" />
+            <circle cx="0" cy="0" r="10" fill="#4a4a4a" />
+            <circle cx="0" cy="0" r="8" fill="#2a2a2a" />
+            <!-- Raios -->
+            <line x1="-7" y1="0" x2="7" y2="0" stroke="#6a6a6a" stroke-width="2" />
+            <line x1="0" y1="-7" x2="0" y2="7" stroke="#6a6a6a" stroke-width="2" />
+            <line x1="-5" y1="-5" x2="5" y2="5" stroke="#6a6a6a" stroke-width="1.5" />
+            <line x1="-5" y1="5" x2="5" y2="-5" stroke="#6a6a6a" stroke-width="1.5" />
+            <circle cx="0" cy="0" r="3" fill="#1a1a1a" />
+            <circle cx="0" cy="0" r="9" fill="none" stroke="#5a5a5a" stroke-width="1" />
+        </g>
+
+        <!-- RODA DIANTEIRA -->
+        <g transform="translate(55, 15)">
+            <circle cx="0" cy="0" r="18" fill="url(#tire)" />
+            <circle cx="0" cy="0" r="15" fill="#1a1a1a" />
+            <circle cx="0" cy="0" r="10" fill="#4a4a4a" />
+            <circle cx="0" cy="0" r="8" fill="#2a2a2a" />
+            <!-- Raios -->
+            <line x1="-7" y1="0" x2="7" y2="0" stroke="#6a6a6a" stroke-width="2" />
+            <line x1="0" y1="-7" x2="0" y2="7" stroke="#6a6a6a" stroke-width="2" />
+            <line x1="-5" y1="-5" x2="5" y2="5" stroke="#6a6a6a" stroke-width="1.5" />
+            <line x1="-5" y1="5" x2="5" y2="-5" stroke="#6a6a6a" stroke-width="1.5" />
+            <circle cx="0" cy="0" r="3" fill="#1a1a1a" />
+            <circle cx="0" cy="0" r="9" fill="none" stroke="#5a5a5a" stroke-width="1" />
+        </g>
+
+        <!-- BRILHOS -->
+        <path d="M -55 -24 Q -35 -26 -15 -24" stroke="#66b3ff" stroke-width="1.5" opacity="0.5" fill="none" />
+        <path d="M 5 -36 Q 20 -37 35 -36" stroke="#66b3ff" stroke-width="1.5" opacity="0.5" fill="none" />
+        <line x1="-70" y1="3" x2="75" y2="3" stroke="#4da6ff" stroke-width="1" opacity="0.4" />
+
+        <!-- BADGE -->
+        <g transform="translate(90, -50)">
+            <circle cx="0" cy="0" r="24" fill="#ff0000" />
+            <text x="0" y="8" font-family="Arial" font-size="22" fill="#ffffff" text-anchor="middle"
+                font-weight="bold">45</text>
+        </g>
+    </g>
+
+    <!-- Elementos decorativos -->
+    <circle cx="50" cy="50" r="15" fill="#0066cc" opacity="0.1" />
+    <circle cx="350" cy="175" r="18" fill="#ff0000" opacity="0.1" />
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 225" fill="none">
+    <defs>
+        <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#0a0b4f;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#00013F;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="peopleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#00d1ff;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#060AF6;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+
+    <rect width="400" height="225" fill="url(#bg)" />
+
+    <!-- Ícone Central: Grupo de Pessoas -->
+    <g transform="translate(200, 112.5)">
+        <!-- Pessoa Central (maior) -->
+        <circle cx="0" cy="-15" r="22" fill="url(#peopleGrad)" />
+        <path d="M -30 35 Q -30 0 0 0 Q 30 0 30 35 Z" fill="url(#peopleGrad)" />
+
+        <!-- Pessoa Esquerda -->
+        <g transform="translate(-55, 10)">
+            <circle cx="0" cy="-10" r="16" fill="url(#peopleGrad)" opacity="0.8" />
+            <path d="M -20 20 Q -20 -5 0 -5 Q 20 -5 20 20 Z" fill="url(#peopleGrad)" opacity="0.8" />
+        </g>
+
+        <!-- Pessoa Direita -->
+        <g transform="translate(55, 10)">
+            <circle cx="0" cy="-10" r="16" fill="url(#peopleGrad)" opacity="0.8" />
+            <path d="M -20 20 Q -20 -5 0 -5 Q 20 -5 20 20 Z" fill="url(#peopleGrad)" opacity="0.8" />
+        </g>
+
+        <!-- Badge de contagem -->
+        <g transform="translate(70, -45)">
+            <circle cx="0" cy="0" r="22" fill="#00FF00" />
+            <text x="0" y="8" font-family="Arial" font-size="20" fill="#000000" text-anchor="middle"
+                font-weight="bold">89</text>
+        </g>
+    </g>
+
+    <!-- Elementos decorativos -->
+    <circle cx="50" cy="50" r="15" fill="#00d1ff" opacity="0.1" />
+    <circle cx="350" cy="175" r="18" fill="#00FF00" opacity="0.1" />
+</svg>
