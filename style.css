@@ -629,17 +629,215 @@ body>*:not(.navbar) {
     transform: translateY(-4px) scale(1.1);
 }
 
-/* --- RODAPÉ --- */
-footer {
+/* --- RODAPÉ APRIMORADO --- */
+.footer {
     background-color: #000000;
-    padding: 35px 0;
-    text-align: center;
-    font-size: 0.95rem;
-    border-top: 5px solid var(--primary-highlight);
     color: var(--text-muted);
+    padding: 60px 0 30px 0;
+    border-top: 3px solid var(--primary-highlight);
     box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5);
     position: relative;
     z-index: 10;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-column h3.footer-title {
+    color: var(--text-light);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-column h3.footer-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--text-gradient);
+    border-radius: 2px;
+}
+
+.footer-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: var(--text-muted);
+}
+
+/* Social Media Links no Footer */
+.social-links-footer {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links-footer a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    transition: all var(--transition-speed);
+    border: 2px solid transparent;
+}
+
+.social-links-footer a:hover {
+    background-color: var(--primary-highlight);
+    color: var(--text-light);
+    transform: translateY(-3px);
+    border-color: var(--link-hover);
+    box-shadow: 0 5px 15px rgba(var(--primary-highlight-rgb), 0.4);
+}
+
+/* Footer Links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all var(--transition-speed);
+    display: inline-block;
+    position: relative;
+}
+
+.footer-links a::before {
+    content: '→';
+    position: absolute;
+    left: -20px;
+    opacity: 0;
+    transition: all var(--transition-speed);
+}
+
+.footer-links a:hover {
+    color: var(--primary-highlight);
+    padding-left: 20px;
+}
+
+.footer-links a:hover::before {
+    opacity: 1;
+    left: 0;
+}
+
+/* Footer Contact */
+.footer-contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-contact li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+}
+
+.footer-contact i {
+    color: var(--primary-highlight);
+    font-size: 1.1rem;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+.footer-contact a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all var(--transition-speed);
+}
+
+.footer-contact a:hover {
+    color: var(--primary-highlight);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 25px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-copyright {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.footer-bottom-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all var(--transition-speed);
+    position: relative;
+}
+
+.footer-bottom-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background: var(--primary-highlight);
+    transition: width var(--transition-speed);
+}
+
+.footer-bottom-links a:hover {
+    color: var(--primary-highlight);
+}
+
+.footer-bottom-links a:hover::after {
+    width: 100%;
+}
+
+/* Responsividade do Footer */
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-bottom-links {
+        justify-content: center;
+    }
 }
 
 /* =======================================

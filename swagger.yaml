@@ -1,0 +1,1039 @@
+openapi: 3.0.3
+info:
+  title: SpeedAuto API
+  description: |
+    # SpeedAuto - Sistema de Gestão para Concessionárias
+    
+    API RESTful completa para gerenciamento de concessionárias de veículos, incluindo:
+    - **Autenticação de usuários** (Login/Registro)
+    - **Gestão de veículos** (CRUD completo)
+    - **Gestão de clientes** (CRUD completo)
+    - **Gestão de vendas** (CRUD completo)
+    - **Dashboard com estatísticas** em tempo real
+    - **Chatbot com IA** (Google Gemini 2.0 Flash + RAG)
+    
+    ## Tecnologias Backend
+    - **Node.js** + **Express.js** + **TypeScript**
+    - **Supabase** (PostgreSQL) para banco de dados
+    - **bcrypt** para criptografia de senhas
+    - **Google Generative AI** para chatbot inteligente
+    - **CORS** habilitado para integração com frontend
+    
+    ## Tecnologias Frontend
+    - **React.js** + **TypeScript**
+    - **Tailwind CSS** para estilização
+    - **React Router** para navegação
+    - **Recharts** para gráficos e dashboards
+    - **Axios** para consumo da API
+    
+    ## Páginas do Frontend
+    - **Login/Registro** - Autenticação de usuários
+    - **Dashboard** - Visão geral com estatísticas e gráficos
+    - **Veículos** - Cadastro e gestão de veículos
+    - **Clientes** - Cadastro e gestão de clientes
+    - **Vendas** - Registro e acompanhamento de vendas
+    - **Relatórios** - Análises e relatórios detalhados
+    - **Financiamento** - Simulação de financiamento
+    - **Configurações** - Configurações do sistema
+    - **Admin** - Painel administrativo
+    
+    ## Autenticação
+    Atualmente utiliza um sistema básico de autenticação com bcrypt.
+    Token JWT será implementado em versões futuras.
+    
+  version: 1.0.0
+  contact:
+    name: SpeedAuto Team
+    email: contato@speedauto.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:5000
+    description: Servidor de Desenvolvimento Local
+  - url: https://api.speedauto.com
+    description: Servidor de Produção
+
+tags:
+  - name: Autenticação
+    description: Endpoints para login e registro de usuários
+  - name: Veículos
+    description: Operações CRUD para veículos
+  - name: Clientes
+    description: Operações CRUD para clientes
+  - name: Vendas
+    description: Operações CRUD para vendas
+  - name: Dashboard
+    description: Estatísticas e métricas do sistema
+  - name: Chatbot
+    description: Chatbot inteligente com IA
+
+paths:
+  /login/login:
+    post:
+      tags:
+        - Autenticação
+      summary: Realizar login
+      description: Autentica um usuário com email e senha
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - senha
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: admin@speedauto.com
+                senha:
+                  type: string
+                  format: password
+                  example: senha123
+      responses:
+        '200':
+          description: Login realizado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    example: fake-jwt-token
+                  email:
+                    type: string
+                    example: admin@speedauto.com
+        '400':
+          description: Email e senha são obrigatórios
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Email ou senha incorretos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Erro interno do servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /login/register:
+    post:
+      tags:
+        - Autenticação
+      summary: Registrar novo usuário
+      description: Cria um novo usuário administrador no sistema
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - senha
+                - nome
+                - telefone
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: novo@speedauto.com
+                senha:
+                  type: string
+                  format: password
+                  example: senha123
+                nome:
+                  type: string
+                  example: João Silva
+                telefone:
+                  type: string
+                  example: (11) 98765-4321
+      responses:
+        '201':
+          description: Usuário cadastrado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Usuário cadastrado com sucesso!
+        '400':
+          description: Dados inválidos ou email já cadastrado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Email já cadastrado
+        '500':
+          description: Erro interno do servidor
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Erro interno no servidor.
+
+  /veiculos:
+    get:
+      tags:
+        - Veículos
+      summary: Listar todos os veículos
+      description: Retorna uma lista com todos os veículos cadastrados
+      responses:
+        '200':
+          description: Lista de veículos retornada com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Veiculo'
+        '500':
+          description: Erro ao buscar veículos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    
+    post:
+      tags:
+        - Veículos
+      summary: Adicionar novo veículo
+      description: Cadastra um novo veículo no sistema
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VeiculoInput'
+      responses:
+        '201':
+          description: Veículo adicionado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Veiculo'
+        '500':
+          description: Erro ao adicionar veículo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /veiculos/{id}:
+    get:
+      tags:
+        - Veículos
+      summary: Buscar veículo por ID
+      description: Retorna os detalhes de um veículo específico
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do veículo
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Veículo encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Veiculo'
+        '404':
+          description: Veículo não encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Erro ao buscar veículo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    
+    put:
+      tags:
+        - Veículos
+      summary: Atualizar veículo
+      description: Atualiza os dados de um veículo existente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do veículo
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VeiculoUpdate'
+      responses:
+        '200':
+          description: Veículo atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Veiculo'
+        '500':
+          description: Erro ao atualizar veículo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    
+    delete:
+      tags:
+        - Veículos
+      summary: Deletar veículo
+      description: Remove um veículo do sistema
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do veículo
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Veículo deletado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Veículo deletado
+        '500':
+          description: Erro ao deletar veículo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /clientes:
+    get:
+      tags:
+        - Clientes
+      summary: Listar todos os clientes
+      description: Retorna uma lista com todos os clientes cadastrados
+      responses:
+        '200':
+          description: Lista de clientes retornada com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cliente'
+        '500':
+          description: Erro ao buscar clientes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    
+    post:
+      tags:
+        - Clientes
+      summary: Adicionar novo cliente
+      description: Cadastra um novo cliente no sistema
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClienteInput'
+      responses:
+        '201':
+          description: Cliente adicionado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cliente'
+        '500':
+          description: Erro ao adicionar cliente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /clientes/{id}:
+    get:
+      tags:
+        - Clientes
+      summary: Buscar cliente por ID
+      description: Retorna os detalhes de um cliente específico
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do cliente
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Cliente encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cliente'
+        '404':
+          description: Cliente não encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Erro ao buscar cliente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    
+    put:
+      tags:
+        - Clientes
+      summary: Atualizar cliente
+      description: Atualiza os dados de um cliente existente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do cliente
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClienteUpdate'
+      responses:
+        '200':
+          description: Cliente atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cliente'
+        '500':
+          description: Erro ao atualizar cliente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    
+    delete:
+      tags:
+        - Clientes
+      summary: Deletar cliente
+      description: Remove um cliente do sistema
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID do cliente
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Cliente deletado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Cliente deletado com sucesso
+        '500':
+          description: Erro ao deletar cliente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /vendas:
+    get:
+      tags:
+        - Vendas
+      summary: Listar todas as vendas
+      description: Retorna uma lista com todas as vendas registradas
+      responses:
+        '200':
+          description: Lista de vendas retornada com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Venda'
+        '500':
+          description: Erro ao buscar vendas
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    
+    post:
+      tags:
+        - Vendas
+      summary: Adicionar nova venda
+      description: Registra uma nova venda no sistema
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VendaInput'
+      responses:
+        '201':
+          description: Venda adicionada com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Venda'
+        '500':
+          description: Erro ao adicionar venda
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /vendas/{id}:
+    get:
+      tags:
+        - Vendas
+      summary: Buscar venda por ID
+      description: Retorna os detalhes de uma venda específica
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID da venda
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Venda encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Venda'
+        '404':
+          description: Venda não encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Erro ao buscar venda
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    
+    put:
+      tags:
+        - Vendas
+      summary: Atualizar venda
+      description: Atualiza os dados de uma venda existente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID da venda
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VendaUpdate'
+      responses:
+        '200':
+          description: Venda atualizada com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Venda'
+        '500':
+          description: Erro ao atualizar venda
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    
+    delete:
+      tags:
+        - Vendas
+      summary: Deletar venda
+      description: Remove uma venda do sistema
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID da venda
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Venda deletada com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Venda deletada
+        '500':
+          description: Erro ao deletar venda
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/dashboard/stats:
+    get:
+      tags:
+        - Dashboard
+      summary: Obter estatísticas do dashboard
+      description: Retorna métricas e estatísticas em tempo real do sistema
+      responses:
+        '200':
+          description: Estatísticas retornadas com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardStats'
+        '500':
+          description: Erro ao buscar estatísticas do dashboard
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /api/chatbot:
+    post:
+      tags:
+        - Chatbot
+      summary: Enviar mensagem para o chatbot
+      description: |
+        Envia uma mensagem para o chatbot inteligente que utiliza:
+        - **Google Gemini 2.0 Flash** para processamento de linguagem natural
+        - **RAG (Retrieval-Augmented Generation)** para respostas contextualizadas
+        - Conhecimento sobre veículos, vendas e processos da concessionária
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - message
+              properties:
+                message:
+                  type: string
+                  example: Quais veículos estão disponíveis?
+      responses:
+        '200':
+          description: Resposta do chatbot gerada com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatbotResponse'
+        '400':
+          description: Mensagem inválida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Erro ao processar mensagem
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    Veiculo:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        marca:
+          type: string
+          example: Toyota
+        modelo:
+          type: string
+          example: Corolla
+        ano:
+          type: integer
+          example: 2023
+        cor:
+          type: string
+          example: Prata
+        combustivel:
+          type: string
+          example: Flex
+        placa:
+          type: string
+          example: ABC-1234
+        valor_venda:
+          type: number
+          format: float
+          example: 125000.00
+        status:
+          type: string
+          enum:
+            - Disponível
+            - Vendido
+            - Em manutenção
+          example: Disponível
+      required:
+        - marca
+        - modelo
+        - ano
+        - cor
+        - combustivel
+        - placa
+        - valor_venda
+        - status
+
+    VeiculoInput:
+      type: object
+      properties:
+        marca:
+          type: string
+          example: Toyota
+        modelo:
+          type: string
+          example: Corolla
+        ano:
+          type: integer
+          example: 2023
+        cor:
+          type: string
+          example: Prata
+        combustivel:
+          type: string
+          example: Flex
+        placa:
+          type: string
+          example: ABC-1234
+        valor_venda:
+          type: number
+          format: float
+          example: 125000.00
+        status:
+          type: string
+          enum:
+            - Disponível
+            - Vendido
+            - Em manutenção
+          example: Disponível
+      required:
+        - marca
+        - modelo
+        - ano
+        - cor
+        - combustivel
+        - placa
+        - valor_venda
+        - status
+
+    VeiculoUpdate:
+      type: object
+      properties:
+        marca:
+          type: string
+          example: Toyota
+        modelo:
+          type: string
+          example: Corolla
+        ano:
+          type: integer
+          example: 2023
+        cor:
+          type: string
+          example: Prata
+        combustivel:
+          type: string
+          example: Flex
+        placa:
+          type: string
+          example: ABC-1234
+        valor_venda:
+          type: number
+          format: float
+          example: 125000.00
+        status:
+          type: string
+          enum:
+            - Disponível
+            - Vendido
+            - Em manutenção
+          example: Disponível
+
+    Cliente:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        nome:
+          type: string
+          example: Maria Santos
+        email:
+          type: string
+          format: email
+          example: maria@email.com
+        telefone:
+          type: string
+          example: (11) 98765-4321
+        status:
+          type: string
+          enum:
+            - Lead
+            - Cliente Ativo
+            - Inativo
+          example: Cliente Ativo
+      required:
+        - nome
+        - email
+        - telefone
+        - status
+
+    ClienteInput:
+      type: object
+      properties:
+        nome:
+          type: string
+          example: Maria Santos
+        email:
+          type: string
+          format: email
+          example: maria@email.com
+        telefone:
+          type: string
+          example: (11) 98765-4321
+        status:
+          type: string
+          enum:
+            - Lead
+            - Cliente Ativo
+            - Inativo
+          example: Lead
+      required:
+        - nome
+        - email
+        - telefone
+        - status
+
+    ClienteUpdate:
+      type: object
+      properties:
+        nome:
+          type: string
+          example: Maria Santos
+        email:
+          type: string
+          format: email
+          example: maria@email.com
+        telefone:
+          type: string
+          example: (11) 98765-4321
+        status:
+          type: string
+          enum:
+            - Lead
+            - Cliente Ativo
+            - Inativo
+          example: Cliente Ativo
+
+    Venda:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        veiculo:
+          type: string
+          example: Toyota Corolla 2023
+        cliente:
+          type: string
+          example: Maria Santos
+        data:
+          type: string
+          format: date
+          example: 2024-01-15
+        valor:
+          type: number
+          format: float
+          example: 125000.00
+        status:
+          type: string
+          enum:
+            - Em Andamento
+            - Concluída
+            - Cancelada
+          example: Concluída
+        observacoes:
+          type: string
+          example: Venda à vista com desconto
+      required:
+        - veiculo
+        - cliente
+        - data
+        - valor
+        - status
+
+    VendaInput:
+      type: object
+      properties:
+        veiculo:
+          type: string
+          example: Toyota Corolla 2023
+        cliente:
+          type: string
+          example: Maria Santos
+        data:
+          type: string
+          format: date
+          example: 2024-01-15
+        valor:
+          type: number
+          format: float
+          example: 125000.00
+        status:
+          type: string
+          enum:
+            - Em Andamento
+            - Concluída
+            - Cancelada
+          example: Em Andamento
+        observacoes:
+          type: string
+          example: Venda à vista com desconto
+      required:
+        - veiculo
+        - cliente
+        - data
+        - valor
+        - status
+
+    VendaUpdate:
+      type: object
+      properties:
+        veiculo:
+          type: string
+          example: Toyota Corolla 2023
+        cliente:
+          type: string
+          example: Maria Santos
+        data:
+          type: string
+          format: date
+          example: 2024-01-15
+        valor:
+          type: number
+          format: float
+          example: 125000.00
+        status:
+          type: string
+          enum:
+            - Em Andamento
+            - Concluída
+            - Cancelada
+          example: Concluída
+        observacoes:
+          type: string
+          example: Venda à vista com desconto
+
+    DashboardStats:
+      type: object
+      properties:
+        totalVeiculos:
+          type: integer
+          example: 45
+        totalClientes:
+          type: integer
+          example: 128
+        totalVendas:
+          type: integer
+          example: 32
+        receitaTotal:
+          type: number
+          format: float
+          example: 3500000.00
+        vendasMes:
+          type: integer
+          example: 8
+        receitaMes:
+          type: number
+          format: float
+          example: 850000.00
+        veiculosDisponiveis:
+          type: integer
+          example: 30
+        veiculosVendidos:
+          type: integer
+          example: 15
+
+    ChatbotResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1732835858000
+        text:
+          type: string
+          example: Temos 30 veículos disponíveis no momento, incluindo sedans, SUVs e hatches de diversas marcas.
+        sender:
+          type: string
+          example: ai
+        timestamp:
+          type: string
+          example: "20:37"
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Erro ao processar requisição
