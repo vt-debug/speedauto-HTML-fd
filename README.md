@@ -78,7 +78,7 @@ A documentação inclui:
 | Nome | Função | GitHub | LinkedIn |
 |------|--------|--------|----------|
 | **Vitor Alexandre** | Desenvolvedor Full-Stack | [@vt-debug](https://github.com/vt-debug) | [LinkedIn](https://www.linkedin.com/in/vitor-alexandre-356aa42a7) |
-| **Lucas Clessa** | Desenvolvedor Full-Stack | [@lukinhasc-dev](https://github.com/lukinhasc-dev) | [LinkedIn](https://www.linkedin.com/in/lukinhasclessa/) |
+| **Lucas Silva** | Desenvolvedor Full-Stack | [@lukinhasc-dev](https://github.com/lukinhasc-dev) | [LinkedIn](https://www.linkedin.com/in/lukinhasclessa/) |
 | **Flávio Henrique** | AI - Developer | [@FhVieira13](https://github.com/FhVieira13) | [LinkedIn](https://www.linkedin.com/in/flavio-henrique-984951223/) |
 | **Débora Gonçalves** | Desenvolvedora Front-End | [@Dehhminiqz](https://github.com/Dehhminiqz) | [LinkedIn](https://www.linkedin.com/in/debora-gon%C3%A7alves-de-oliveira-bb0501287/) |
 | **Gabriel Augusto** | AI - Developer | [@Gabriel-Augusto05](https://github.com/Gabriel-Augusto05) | [LinkedIn](https://www.linkedin.com/in/augusto1605/) |
@@ -91,7 +91,7 @@ A documentação inclui:
 
 ## 📄 Licença
 
-© 2024 SpeedAuto. Todos os direitos reservados.
+© 2025 SpeedAuto. Todos os direitos reservados.
 
 Este projeto foi desenvolvido como parte de um trabalho acadêmico, unindo conhecimentos de lógica de programação, desenvolvimento web e back-end.
 
