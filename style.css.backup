@@ -1112,7 +1112,7 @@ h2 {
     text-align: center;
     gap: 15px;
 }
-
+}
 
 /* --- SMARTPHONES (480px) --- */
 @media (max-width: 480px) {
@@ -1368,38 +1368,6 @@ h2 {
     }
 
     /* Cards */
-    /* Hero */
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.7rem;
-    }
-
-    /* Navbar */
-    .logo-text {
-        font-size: 1.2rem;
-    }
-
-    .navbar nav ul li a {
-        padding: 5px 8px;
-        font-size: 0.8rem;
-    }
-
-    /* Botões */
-    .btn {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
-
-    /* Tech Grid */
-    .tech-grid {
-        grid-template-columns: 1fr;
-        /* 1 coluna em telas muito pequenas */
-    }
-
-    /* Cards */
     .colaborador-card {
         max-width: 100%;
     }
@@ -1422,87 +1390,5 @@ h2 {
 
     .hero-content .main-text {
         max-width: 750px;
-    }
-}
-
-/* ========================================
-   AJUSTES ADICIONAIS PARA MOBILE
-   ======================================== */
-
-/* Ajustes específicos para Hero em Tablets */
-@media (max-width: 768px) {
-
-    /* Remove parallax em mobile para melhor performance */
-    .hero {
-        background-attachment: scroll;
-        background-size: cover;
-        background-position: center;
-    }
-
-    /* Centraliza conteúdo em mobile */
-    .hero-content {
-        align-items: center;
-        text-align: center;
-        padding-top: 100px;
-    }
-
-    .hero-content .main-text {
-        text-align: center;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-
-    .hero-content .main-text h1,
-    .hero-content .main-text p {
-        text-align: center;
-    }
-
-    .hero-content .actions {
-        justify-content: center;
-    }
-}
-
-/* Ajustes específicos para Hero em Smartphones */
-@media (max-width: 480px) {
-    .hero {
-        background-attachment: scroll;
-        background-size: cover;
-        background-position: center;
-    }
-
-    .hero-content {
-        padding-top: 120px;
-        padding-bottom: 40px;
-    }
-
-    .hero-content .main-text {
-        padding: 0 15px;
-    }
-
-    /* Ajusta tamanho da imagem do Polo em mobile */
-    .polo-image {
-        flex: 0 0 200px;
-        height: 200px;
-    }
-
-    /* Garante que tech grid fique em 2 colunas */
-    .tech-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Ajustes para telas muito pequenas */
-@media (max-width: 360px) {
-    .hero-content {
-        padding-top: 100px;
-    }
-
-    .hero-content .main-text {
-        padding: 0 10px;
-    }
-
-    /* Tech grid em 1 coluna para telas muito pequenas */
-    .tech-grid {
-        grid-template-columns: 1fr;
     }
 }
