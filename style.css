@@ -1310,3 +1310,25 @@ body>*:not(.navbar) {
         max-width: 100%;
     }
 }
+
+/* Responsividade da imagem do HERO para Mobile */
+@media (max-width: 768px) {
+    .hero {
+        background-attachment: scroll !important;
+        /* Remove o parallax no mobile */
+        background-position: center top !important;
+        /* Foca o topo da imagem */
+        background-size: cover !important;
+        /* Mantém a proporção correta */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        background-position: center center !important;
+        /* Ajuste mais equilibrado */
+        background-size: cover !important;
+        min-height: 80vh;
+        /* Evita corte agressivo */
+    }
+}
