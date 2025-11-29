@@ -91,7 +91,7 @@ A documentação inclui:
 
 ## 📄 Licença
 
-© 2024 SpeedAuto. Todos os direitos reservados.
+© 2025 SpeedAuto. Todos os direitos reservados.
 
 Este projeto foi desenvolvido como parte de um trabalho acadêmico, unindo conhecimentos de lógica de programação, desenvolvimento web e back-end.
 
