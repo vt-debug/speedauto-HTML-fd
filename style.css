@@ -295,6 +295,10 @@ h2 {
     text-align: left;
 }
 
+.hero-content .main-text p {
+    font-size: 1.6rem;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
