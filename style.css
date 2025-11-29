@@ -978,6 +978,8 @@ body>*:not(.navbar) {
         padding: 0 15px;
     }
 
+
+
     h1 {
         font-size: 2.2rem;
     }
@@ -1047,5 +1049,264 @@ body>*:not(.navbar) {
         transform: translateY(0) scale(1);
         opacity: 1;
         filter: blur(0);
+    }
+}
+
+/* --- SMARTPHONES (480px) --- */
+@media (max-width: 480px) {
+
+    /* Hero Section - Mobile */
+    .hero {
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .hero-content {
+        padding-top: 120px;
+        padding-bottom: 40px;
+        min-height: calc(100vh - 60px);
+    }
+
+    .hero-content .main-text {
+        padding: 0 15px;
+    }
+
+    /* Tipografia - Tamanhos para mobile */
+    h1 {
+        font-size: 2.5rem;
+        /* Reduzido para mobile */
+        margin-bottom: 0.8rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    .subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 40px;
+    }
+
+    /* Navbar - Mobile */
+    .navbar {
+        padding: 12px 15px;
+        width: calc(100% - 30px);
+    }
+
+    .logo-text {
+        font-size: 1.4rem;
+    }
+
+    .navbar nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 3px;
+    }
+
+    .navbar nav ul li a {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    /* Botões */
+    .btn {
+        padding: 12px 25px;
+        font-size: 0.95rem;
+        max-width: 280px;
+    }
+
+    /* Container - Reduz padding */
+    .container {
+        padding: 0 15px;
+    }
+
+    /* Seções */
+    .section {
+        padding: 60px 0;
+    }
+
+    body>*:not(.navbar) {
+        padding-top: 60px;
+    }
+
+    /* Sobre Nós */
+    .sobre-nos {
+        padding: 50px 0;
+        margin: 20px 0;
+    }
+
+    .polo-image {
+        flex: 0 0 240px;
+        height: 240px;
+    }
+
+    /* Tecnologias */
+    .tecnologias {
+        padding: 50px 0;
+    }
+
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 colunas em mobile */
+        gap: 12px;
+        margin-top: 30px;
+    }
+
+    .tech-item {
+        padding: 12px 18px;
+        font-size: 0.95rem;
+    }
+
+    /* Funcionalidades */
+    .funcionalidades {
+        padding: 50px 0;
+        margin: 20px 0;
+    }
+
+    .funcionalidade-card {
+        padding: 20px;
+    }
+
+    .card-image-wrapper {
+        height: 180px;
+        margin-bottom: 15px;
+    }
+
+    .funcionalidade-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 8px;
+    }
+
+    .funcionalidade-card p {
+        font-size: 0.9rem;
+    }
+
+    /* Colaboradores */
+    .colaboradores {
+        padding: 50px 0;
+    }
+
+    .colaboradores-grid {
+        gap: 25px;
+    }
+
+    .colaborador-card {
+        width: 100%;
+        max-width: 280px;
+        padding: 25px 18px;
+    }
+
+    .card-photo-wrapper {
+        width: 100px;
+        height: 100px;
+    }
+
+    .colaborador-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .colaborador-card .role {
+        font-size: 0.95rem;
+    }
+
+    .social-links a {
+        font-size: 1.8rem;
+        margin: 0 10px;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 40px 0 20px 0;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        /* 1 coluna em mobile */
+        gap: 30px;
+    }
+
+    .footer-column h3.footer-title {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+
+    .footer-description {
+        font-size: 0.9rem;
+    }
+
+    .social-links-footer {
+        justify-content: center;
+    }
+
+    .footer-links,
+    .footer-contact {
+        text-align: center;
+    }
+
+    .footer-contact li {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        padding-top: 20px;
+        margin-top: 30px;
+    }
+
+    .footer-copyright {
+        font-size: 0.85rem;
+    }
+
+    .footer-bottom-links {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .footer-bottom-links a {
+        font-size: 0.85rem;
+    }
+}
+
+/* --- SMARTPHONES PEQUENOS (360px) --- */
+@media (max-width: 360px) {
+
+    /* Hero */
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.7rem;
+    }
+
+    /* Navbar */
+    .logo-text {
+        font-size: 1.2rem;
+    }
+
+    .navbar nav ul li a {
+        padding: 5px 8px;
+        font-size: 0.8rem;
+    }
+
+    /* Botões */
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    /* Tech Grid */
+    .tech-grid {
+        grid-template-columns: 1fr;
+        /* 1 coluna em telas muito pequenas */
+    }
+
+    /* Cards */
+    .colaborador-card {
+        max-width: 100%;
     }
 }
